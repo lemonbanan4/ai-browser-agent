@@ -1,0 +1,18 @@
+.DS_Store
+
+# Backend
+backend/venv/
+backend/.env
+backend/.env.*
+backend/app/.env
+backend/__pycache__/
+backend/screenshots/*.png
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/.turbo/
+frontend/.env.local
+frontend/.env*
+frontend/.vercel/
+frontend/.cache/
