@@ -20,6 +20,14 @@ ALLOWED_ORIGINS = os.getenv(
 
 app = FastAPI()
 
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "service": "AI Browser Agent Backend",
+        "message": "Backend is running successfully 🎉"
+    }
+
 # Serve screenshot files
 SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
 app.mount("/screenshots", StaticFiles(directory=SCREENSHOT_DIR), name="screenshots")

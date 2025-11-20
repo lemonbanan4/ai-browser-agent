@@ -382,6 +382,17 @@ export default function HomePage() {
               </button>
             </div>
           </form>
+          {isRunning && (
+            <div className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 flex items-center gap-3 text-sm text-emerald-200">
+              <div className="size-4 rounded-full border-2 border-emerald-400 border-t-transparent animate-spin" />
+              <div>
+                <p className="font-semibold">Running browser automation…</p>
+                <p className="text-xs text-emerald-300/80">
+                  Please wait, Playwright is working.
+                </p>
+              </div>
+            </div>
+          )}
           {error && (
             <p className="text-xs text-red-400 bg-red-950/40 border border-red-900/60 px-3 py-2 rounded-xl">
               {error}
