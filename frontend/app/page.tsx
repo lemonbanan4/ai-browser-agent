@@ -150,6 +150,7 @@ function LemonBadge() {
 }
 
 export default function HomePage() {
+  const [isMounted, setIsMounted] = useState(false);
   const [liveLogs, setLiveLogs] = useState<string[]>([]);
   const [command, setCommand] = useState("");
   const [isRunning, setIsRunning] = useState(false);
@@ -269,6 +270,22 @@ export default function HomePage() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center px-4 py-6">
+        <div className="w-full max-w-5xl">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-8 text-center text-slate-400 text-sm">
+            Initializing dashboard…
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center px-4 py-6 bg-[radial-gradient(circle_at_top,_rgba(16,185,129,0.18),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.12),_transparent_55%)]">

@@ -13,6 +13,11 @@ from fastapi.staticfiles import StaticFiles
 import os
 
 
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000"
+).split(",")
+
 app = FastAPI()
 
 # Serve screenshot files
@@ -20,15 +25,9 @@ SCREENSHOT_DIR = os.path.join(os.path.dirname(__file__), "..", "screenshots")
 app.mount("/screenshots", StaticFiles(directory=SCREENSHOT_DIR), name="screenshots")
 
 
-# CORS for Next.js
-origins = [
-    "http://localhost:3000",
-    # add your deployed frontend URL later
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[origin.strip() for origin in ALLOWED_ORIGINS if origin.strip()],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
