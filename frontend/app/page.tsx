@@ -196,7 +196,7 @@ export default function HomePage() {
     setPlan(null);
     setLogs([]);
     setResults([]);
-
+    try {
       const res = await fetch(`${API_URL}/run`, {
         method: "POST",
         headers: {
@@ -225,7 +225,9 @@ export default function HomePage() {
       };
 
       setHistory((prev) => [newEntry, ...prev]);
-    } catch (err: any) {
+
+    } catch (err) {
+      const error = err as any;
       console.error(err);
       setError(err.message || "Something went wrong");
 
@@ -236,6 +238,7 @@ export default function HomePage() {
       };
 
       setHistory((prev) => [newEntryErr, ...prev]);
+      
     } finally {
       setIsRunning(false);
       if (poller) clearInterval(poller);
