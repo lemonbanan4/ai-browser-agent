@@ -197,7 +197,8 @@ export default function HomePage() {
     setLogs([]);
     setResults([]);
     try {
-      const res = await fetch(`${API_URL}/run`, {
+    
+      const res = await fetch(`${API_URL}/run`, { ... });
         method: "POST",
         headers: {
           "Content-Type": "application/json",
