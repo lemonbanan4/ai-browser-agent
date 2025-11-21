@@ -229,7 +229,7 @@ export default function HomePage() {
     } catch (err) {
       const error = err as any;
       console.error(err);
-      setError(err.message || "Something went wrong");
+      setError(error.message || "Something went wrong");
 
       const newEntryErr = {
         command,
@@ -238,7 +238,7 @@ export default function HomePage() {
       };
 
       setHistory((prev) => [newEntryErr, ...prev]);
-      
+
     } finally {
       setIsRunning(false);
       if (poller) clearInterval(poller);
