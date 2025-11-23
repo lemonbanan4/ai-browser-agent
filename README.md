@@ -108,4 +108,3 @@ npm run dev   # open http://localhost:3000
 ## 📝 Portfolio Blurb
 > Built a production-style AI browser agent that turns text prompts into real Playwright automation. FastAPI + GPT-4o-mini plan the steps, Render-hosted Chromium executes them, Neon stores every run, and a neon Next.js dashboard lets users launch commands, inspect logs, and view screenshots in one place.
 
-Use it as a showcase of AI + automation chops—then extend it with auth, team workspaces, or more preset workflows. 👏
